@@ -1,0 +1,46 @@
+name: ✨ Feature Request
+description: Yeni bir özellik isteğinde bulunun
+title: "[Feature] "
+labels: [enhancement]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Teşekkürler! Yeni bir özellik önermek harika. Aşağıdaki bilgileri doldurmanız yeterli.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Özellik özeti
+      description: Kısa ve net bir şekilde bu özelliğin ne olduğunu yazın.
+      placeholder: "Sepete eklemeden önce ürüne yorum bırakabilmek"
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Neden bu özelliğe ihtiyaç var?
+      description: Bu özellik hangi problemi çözüyor? Neden önemli?
+      placeholder: "Kullanıcılar ürünle ilgili deneyimlerini diğer kullanıcılarla paylaşmak istiyor"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Önerilen çözüm
+      description: Nasıl bir çözüm öneriyorsunuz? Teknik olarak veya görsel olarak nasıl olabilir?
+      placeholder: "Ürün detay sayfasına yorum bırakma alanı eklenmesi"
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Aciliyet
+      description: Bu özelliğin ne kadar acil olduğunu belirtin
+      options:
+        - Düşük
+        - Orta
+        - Yüksek
+    validations:
+      required: true
