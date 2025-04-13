@@ -31,7 +31,7 @@ export const listCollections = async (
   queryParams.offset = queryParams.offset || "0"
 
   return sdk.client
-    .fetch<{ collections: HttpTypes.StoreCollection[]; count: number }>(
+    .fetch<{ collections?: HttpTypes.StoreCollection[]; count?: number }>(
       "/store/collections",
       {
         query: queryParams,
@@ -39,7 +39,13 @@ export const listCollections = async (
         cache: "force-cache",
       }
     )
-    .then(({ collections }) => ({ collections, count: collections.length }))
+    .then(({ collections }) => {
+      const result = collections || []
+      return {
+        collections: result,
+        count: result.length,
+      }
+    })
 }
 
 export const getCollectionByHandle = async (
@@ -57,3 +63,4 @@ export const getCollectionByHandle = async (
     })
     .then(({ collections }) => collections[0])
 }
+

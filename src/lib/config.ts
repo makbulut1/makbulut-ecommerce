@@ -7,8 +7,28 @@ if (process.env.MEDUSA_BACKEND_URL) {
   MEDUSA_BACKEND_URL = process.env.MEDUSA_BACKEND_URL
 }
 
-export const sdk = new Makbulut({
-  baseUrl: MEDUSA_BACKEND_URL,
-  debug: process.env.NODE_ENV === "development",
-  publishableKey: process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
-})
+export const sdk = {
+  client: {
+    fetch: async () => {
+      return {
+        products: [
+          {
+            id: "mock-1",
+            title: "Mock Ürün",
+            thumbnail: "/mock.jpg",
+            variants: [],
+            handle: "mock-urun",
+            description: "Bu bir mock üründür.",
+            images: [],
+            tags: [],
+            options: [],
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          },
+        ],
+        count: 1,
+      }
+    },
+  },
+}
+
