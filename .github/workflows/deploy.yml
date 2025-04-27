@@ -16,3 +16,5 @@ jobs:
           eval $(ssh-agent -s)
           ssh-add ~/.ssh/deploy_key
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "echo 'SSH connection successful'" 
+          ls
+          pwd
