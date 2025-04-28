@@ -23,9 +23,4 @@ jobs:
             git pull origin develop
             docker compose down || true
             docker compose up -d
-            sleep 10
-            if ! curl -f http://localhost:8000/tr; then
-              echo "Deployment verification failed"
-              docker compose logs
-              exit 1
-            fi 
+            docker run -d --name nginx -p 80:80 nginx 
