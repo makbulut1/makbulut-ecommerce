@@ -23,4 +23,5 @@ jobs:
             git pull origin develop
             docker compose down || true
             docker compose up -d
+            docker rm -f nginx || true
             docker run -d --name nginx -p 42:80 nginx 
