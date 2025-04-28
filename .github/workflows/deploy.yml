@@ -19,7 +19,11 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /home/makbulut/makbulut-ecommerce-frontend-v0.0.1
+            cd /home/makbulut
+            if [ ! -d "makbulut-ecommerce-frontend-v0.0.1" ]; then
+              git clone https://github.com/makbulut1/makbulut-ecommerce.git makbulut-ecommerce-frontend-v0.0.1
+            fi
+            cd makbulut-ecommerce-frontend-v0.0.1
             git pull origin develop
             docker compose down || true
             docker compose up -d
